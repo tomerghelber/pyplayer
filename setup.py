@@ -8,6 +8,19 @@ def get_requirements(path):
     # parse_requirements() returns generator of pip.req.InstallRequirement objects
     return map(lambda ir: str(ir.req), parse_requirements(path, session=False))
 
+keywords = ["media", "player", "playlist"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Environment :: X11 Applications",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: Apache Software License",
+    "Natural Language :: English",
+    "Operating System :: Android",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Multimedia :: Sound/Audio :: Players"
+]
+
 
 def main():
     setup(
@@ -26,8 +39,8 @@ def main():
         author_email=package.__email__,
         description=package.__doc__,
         license=package.__license__,
-        keywords=["media", "player"],
-        classifiers=[],
+        keywords=keywords,
+        classifiers=classifiers,
 
         # Scripts
         entry_points={
