@@ -39,13 +39,13 @@ class MainScreen(Screen):
         super().__init__(**kw)
 
         self.playlist = StaticPlaylist([
-            # Add manually here
+
         ])
         self.__cached_playlist = list(self.playlist)
         self.load_audio()
 
         def update_position(_):
-            if self.sound.state == 'play':
+            if self.sound and self.sound.state == 'play':
                 self.last_sound_position = self.sound.get_pos()
 
         Clock.schedule_interval(update_position, 1.5)
@@ -88,6 +88,8 @@ class MainScreen(Screen):
     def load_audio(self):
         if self.sound:
             self.sound.unload()
+        if len(self.__cached_playlist) == 0:
+            return
         self.sound = SoundLoader.load(self.__cached_playlist[self.playlist_current_index])
         self.sound.volume = self.volume
         audio_path = self.__cached_playlist[self.playlist_current_index]
