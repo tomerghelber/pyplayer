@@ -1,13 +1,15 @@
 from setuptools import setup, find_packages
+from pip.req import parse_requirements
 
 import playlist as package
 
 
+def get_requirements(path):
+    # parse_requirements() returns generator of pip.req.InstallRequirement objects
+    return map(lambda ir: str(ir.req), parse_requirements(path, session=False))
+
+
 def main():
-    with open("requirements.txt") as f:
-        install_requires = f.readlines()
-    with open("setup_requirements.txt") as f:
-        setup_requires = f.readlines()
     setup(
         name=package.__name__,
         version=package.__version__,
@@ -16,8 +18,8 @@ def main():
         # Project uses reStructuredText, so ensure that the docutils get
         # installed or upgraded on the target machine
 
-        install_requires=install_requires,
-        setup_requires=setup_requires,
+        install_requires=get_requirements("requirements.txt"),
+        setup_requires=get_requirements("setup_requirements.txt"),
 
         # metadata for upload to PyPI
         author=package.__author__,
