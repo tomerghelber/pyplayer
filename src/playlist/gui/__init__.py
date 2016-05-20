@@ -33,5 +33,10 @@ class MediaPlayerApp(App):
         print(config, section, key, value)
 
 
+def main():
+    app = MediaPlayerApp()
+    app.run()
+
+
 if __name__ == '__main__':
     MediaPlayerApp().run()
