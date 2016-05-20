@@ -1,0 +1,13 @@
+[
+    {
+        "type": "title",
+        "title": "Windows"
+    },
+    {
+        "type": "bool",
+        "title": "Show inner volume",
+        "desc": "Set the window in windowed or fullscreen",
+        "section": "example",
+        "key": "volume"
+    }
+]
