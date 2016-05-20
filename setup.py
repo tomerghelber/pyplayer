@@ -26,7 +26,15 @@ def main():
         author_email=package.__email__,
         description=package.__doc__,
         license=package.__license__,
-        classifiers=[]
+        keywords=["media", "player"],
+        classifiers=[],
+
+        # Scripts
+        entry_points={
+            'gui_scripts': [
+                'pymediaplayer = playlist.gui:player.gui:main',
+            ]
+        }
     )
 
 
